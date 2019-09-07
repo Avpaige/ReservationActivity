@@ -78,24 +78,14 @@
                     email: $("#email").val().trim(),
 
                 };
-                console.log(newReservation)
-                if (reservations.length < 5) {
-                    app.post("/api/make-reservation", function (req, res) {
-                        var newReservation = req.body;
-                        console.log(newReservation);
-                        reservations.push(newReservation);
-                        res.json(newReservation);
-                        alert("Congratulations your reservation has been saved!")
-                    })
-                } else if (reservations.length = 5) {
-                    app.post("/api/make-reservation", function (req, res) {
-                        var newReservation = req.body;
-                        console.log(newReservation);
-                        waitList.push(newReservation);
-                        res.json(newReservation);
-                        alert("You've been added to the waitlist and will be notified when a reservation opens up!")
-                    })
-                }
+                console.log(newReservation, "From HTML");
+
+                $.post("/api/make-reservation", newReservation)
+                    .then(function (data) {
+                        // console.log("add.html", data);
+                        alert("Adding Reservation ...");
+                    });
+
             } else {
                 alert("You must fill out the form entirely to make a reservation.");
             }

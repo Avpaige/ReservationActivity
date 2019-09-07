@@ -26,10 +26,10 @@ app.get("/view-tables", function (req, res) {
 
 // app.get to connect to other API (Need to update)
 app.get("/api/tables", function (req, res) {
-    res.JSON(reservations);
+    res.json(reservations);
 });
 app.get("/api/waitlist", function (req, res) {
-    res.JSON(waitList);
+    res.json(waitList);
 });
 
 var reservations = []
@@ -37,15 +37,18 @@ var waitList = []
 
 app.post("/api/make-reservation", function (req, res) {
     var newReservation = req.body;
+    console.log (newReservation)
     var returnBody = {
       reservation: newReservation
     };
     if(reservations.length >=5) {
        returnBody.waiting_list = true;
        waitingList.push(newReservation);
+       console.log(waitList);
     } else {
        returnBody.waiting_list = false;
        reservations.push(newReservation)
+       console.log(reservations);
     }
     res.json(returnBody);
   })
