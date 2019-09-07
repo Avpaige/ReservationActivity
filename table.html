@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>🔥 Hot Restaurant</title>
+    <title>🔥 Hot Restaurant | Reseravtions</title>
     <!-- Bootstrap HTML/CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,17 +26,43 @@
         <div class="jumbotron">
             <h1>🔥 Hot Restaurant</h1>
             <hr class="my-3">
-            <p class="lead">We only have 5 tables! Book your seat before they all are gone!
-                </p>
+            <p class="lead">Make a reservation in the form below ✍🏽
+            </p>
             <p class="lead">
+                <a class="btn btn-primary btn-lg btn-success" href="/make-reservation" role="button">🏠 Home</a>
                 <a class="btn btn-primary btn-lg btn-info " href="/view-tables" role="button">🍽 View Tables</a>
-                <a class="btn btn-primary btn-lg btn-secondary" href="/make-reservation" role="button">✍🏽 Make Reservation</a>
             </p>
         </div>
-        <div class="lead">
+
+        <div class="card">
+            <div class="card-header">
+                Make Reservation
+            </div>
+            <form class="py-2 px-4">
+                <div class="form-group py-2">
+                    <label for="nameInput">Name</label>
+                    <input type="email" class="form-control" id="name" placeholder="Enter Full Name">
+                </div>
+                <div class="form-group py-2">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="password" class="form-control" id="phonenumber" placeholder="Phone Number">
+                </div>
+                <div class="form-group py-2">
+                    <label for="email">Email</label>
+                    <input type="password" class="form-control" id="email" placeholder="Email">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="my-5">
             <a href="/api/tables">API Tables</a> | <a href="/api/waitlist">API Wailist</a>
         </div>
     </div>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript">
+
+    </script>
 
 </body>
 
