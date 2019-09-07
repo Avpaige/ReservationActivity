@@ -51,7 +51,7 @@
                     <label for="email">Email</label>
                     <input type="password" class="form-control" id="email" placeholder="Email">
                 </div>
-                <button type="submit" id= "reserve" class="btn btn-primary">Submit</button>
+                <button type="submit" id="reserve" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <div class="my-5">
@@ -61,39 +61,48 @@
 
     <!-- JAVASCRIPT -->
     <script type="text/javascript">
-    
-var reservations = []
-var waitList = []
 
-function validateForm() {
-    var allFieldsValid = true;
-    $(".form-control").each(function () {
-        if (!$(this).val()) {
-            allFieldsValid = false;
-            alert("You must fill out the form entirely to make a reservation.")
+        var reservations = []
+        var waitList = []
+
+        function validateForm() {
+            var allFieldsValid = true;
+            $(".form-control").each(function () {
+                if (!$(this).val()) {
+                    allFieldsValid = false;
+                }
+            })
+            return allFieldsValid;
         }
-    })
-    return allFieldsValid;
-} if (validateForm()) {
-    $("#reserve").on("click", function(event) {
-        event.preventDefault();
-        var newReservation = {
-          name: $("#name").val().trim(),
-          number: $("#phonenumber").val().trim(),
-          email: $("#email").val().trim(),
-        };    
-    if (reservations.length<5){
-    app.post("/api/make-reservation", function(req, res) {
-    console.log(newReservation);
-    reservations.push(newReservation);
-    res.json(newReservation);
-  } else {
-    app.post("/api/make-reservation", function(req, res) {
-    console.log(newReservation);
-    waitlist.push(newReservation);
-    res.json(newReservation);
-  }
 
+        if (validateForm()){
+        $("#reserve").on("click", function (event) {
+            event.preventDefault();
+            
+            var newReservation = {
+                name: $("#name").val().trim(),
+                number: $("#phonenumber").val().trim(),
+                email: $("#email").val().trim(),
+            
+            };
+            if (reservations.length < 5) {
+                app.post("/api/make-reservation", function (req, res) {
+                    console.log(newReservation);
+                    reservations.push(newReservation);
+                    res.json(newReservation);
+                    alert("Congratulations your reservation has been saved!")
+                })
+            } else if (reservations.length > 5) {
+                app.post("/api/make-reservation", function (req, res) {
+                    console.log(newReservation);
+                    waitlist.push(newReservation);
+                    res.json(newReservation);
+                    alert("You've been added to the waitlist and will be notified when a reservation opens up!")
+                })}
+            })
+        } else {
+            alert("You must fill out the form entirely to make a reservation.");
+        }
     </script>
 
 </body>
