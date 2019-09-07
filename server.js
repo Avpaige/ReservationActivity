@@ -1,4 +1,5 @@
 var express = require("express");
+var $ = require('jQuery')
 var path = require("path");
 var app = express();
 var PORT = 3000;

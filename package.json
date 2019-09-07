@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Avpaige/ReservationActivity#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jQuery": "^1.7.4",
+    "nodemon": "^1.19.2"
   }
 }
