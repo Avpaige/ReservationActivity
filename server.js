@@ -3,7 +3,6 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 
-<<<<<<< HEAD
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,8 +25,6 @@ app.get("/view-tables", function (req, res) {
 
 
 
-=======
->>>>>>> 8e013fdfb36ae10ff5c8b2dbc3c19bdb57dd06a5
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
