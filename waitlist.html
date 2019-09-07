@@ -27,14 +27,41 @@
             <h1>🔥 Hot Restaurant</h1>
             <hr class="my-3">
             <p class="lead">Current Reservations and Waitlist
-                </p>
+            </p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg btn-success " href="/" role="button">🏠 Home</a>
-                <a class="btn btn-primary btn-lg btn-secondary" href="/make-reservation" role="button">✍🏽 Make Reservation</a>
+                <a class="btn btn-primary btn-lg btn-secondary" href="/make-reservation" role="button">✍🏽 Make
+                    Reservation</a>
             </p>
         </div>
+
+        <div class="card bg-light mb-3">
+            <div class="card-header">Current Reservations We Are Accepting</div>
+            <div class="card-body" id="reservationCard">
+                <div>
+                    <h5 class="card-title">Currently Accepting</h5>
+                    <p class="card-text">Name: name</p>
+                    <p class="card-text">Email: email</p>
+                    <p class="card-text">Phone: phone</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card text-white bg-warning  mb-3">
+            <div class="card-header">Current Waitlist</div>
+            <div class="card-body" id="waitlistCard">
+                <div>
+                    <h5 class="card-title">Waitlist</h5>
+                        <p class="card-text">Name: name</p>
+                        <p class="card-text">Email: email</p>
+                        <p class="card-text">Phone: phone</p>
+                </div>
+            </div>
+        </div>
+
         <div class="lead">
-            <a href="">Clear Tables</a> | <a href="/api/tables">API Tables</a> | <a href="/api/waitlist">API Wailist</a>
+            <a href="">Clear Tables</a> | <a href="/api/tables">API Tables</a> | <a href="/api/waitlist">API
+                Wailist</a>
         </div>
     </div>
 
