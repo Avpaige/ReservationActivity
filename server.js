@@ -47,9 +47,55 @@ app.get("/view-tables", function (req, res) {
 });
 
 // app.get to connect to other API (Need to update)
-app.get("/view-tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "waitlist.html"));
-
-});app.get("/view-tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "waitlist.html"));
+app.get("/api/tables", function (req, res) {
+    res.JSON(reservations);
+}); 
+app.get("/api/waitlist", function (req, res) {
+    res.JSON(waitList);
 });
+
+
+var reservations = []
+var waitList = []
+
+$("#reserve").on("click", function (event) {
+    // alert("the button clicked")
+    event.preventDefault();
+    function validateForm() {
+        var allFieldsValid = true;
+        $(".form-control").each(function () {
+            if (!$(this).val()) {
+                allFieldsValid = false;
+            }
+        })
+        return allFieldsValid;
+    }
+    if (validateForm()) {
+        var newReservation = {
+            name: $("#name").val().trim(),
+            number: $("#phonenumber").val().trim(),
+            email: $("#email").val().trim(),
+
+        };
+        console.log(newReservation)
+        if (reservations.length < 5) {
+            app.post("/api/make-reservation", function (req, res) {
+                var newReservation = req.body;
+                console.log(newReservation);
+                reservations.push(newReservation);
+                res.json(newReservation);
+                alert("Congratulations your reservation has been saved!")
+            })
+        } else if (reservations.length = 5) {
+            app.post("/api/make-reservation", function (req, res) {
+                var newReservation = req.body;
+                console.log(newReservation);
+                waitList.push(newReservation);
+                res.json(newReservation);
+                alert("You've been added to the waitlist and will be notified when a reservation opens up!")
+            })
+        }
+    } else {
+        alert("You must fill out the form entirely to make a reservation.");
+    }
+})
