@@ -67,7 +67,7 @@ $("#reserve").on("click", function (event) {
             })
         } else if (reservations.length = 5) {
             app.post("/api/make-reservation", function (req, res) {
-                var newReservation = req.body;
+                var newReservation = req.body; 
                 console.log(newReservation);
                 waitList.push(newReservation);
                 res.json(newReservation);
