@@ -59,7 +59,49 @@
             <a href="/api/tables">API Tables</a> | <a href="/api/waitlist">API Waitlist</a>
         </div>
     </div>
-    <script src="./server.js"></script>
+    <script type="text/javascript">
+        $("#reserve").on("click", function (event) {
+            // alert("the button clicked")
+            event.preventDefault();
+            function validateForm() {
+                var allFieldsValid = true;
+                $(".form-control").each(function () {
+                    if (!$(this).val()) {
+                        allFieldsValid = false;
+                    }
+                })
+                return allFieldsValid;
+            }
+            if (validateForm()) {
+                var newReservation = {
+                    name: $("#name").val().trim(),
+                    number: $("#phonenumber").val().trim(),
+                    email: $("#email").val().trim(),
+
+                };
+                console.log(newReservation)
+                if (reservations.length < 5) {
+                    app.post("/api/make-reservation", function (req, res) {
+                        var newReservation = req.body;
+                        console.log(newReservation);
+                        reservations.push(newReservation);
+                        res.json(newReservation);
+                        alert("Congratulations your reservation has been saved!")
+                    })
+                } else if (reservations.length = 5) {
+                    app.post("/api/make-reservation", function (req, res) {
+                        var newReservation = req.body;
+                        console.log(newReservation);
+                        waitList.push(newReservation);
+                        res.json(newReservation);
+                        alert("You've been added to the waitlist and will be notified when a reservation opens up!")
+                    })
+                }
+            } else {
+                alert("You must fill out the form entirely to make a reservation.");
+            }
+        })
+    </script>
 </body>
 
 </html>
